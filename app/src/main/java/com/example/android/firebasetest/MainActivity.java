@@ -94,7 +94,11 @@ public class MainActivity extends AppCompatActivity {
 
                                 if(currentStatus.equals(statusUpdate))
                                     //Toast.makeText(MainActivity.this,"Chori",Toast.LENGTH_LONG).show();
-                                    Data.setText(Name+"\n"+Sport+"\n"+College+"\nAlready Recorded");
+                                    Data.setText(Name + "\n" + Sport + "\n" + Designation + "\n" + College);
+                                    TextView alert = findViewById(R.id.alert_view);
+                                    alert.setText("Already Recorded");
+                                    MediaPlayer player=MediaPlayer.create(MainActivity.this,R.raw.beep);
+                                    player.start();
                                 else {
                                     document.getReference().update("Status",statusUpdate);
                                     String url = (str1+Designation+str1a+Name+str2+Sport+str3+College+str4);
