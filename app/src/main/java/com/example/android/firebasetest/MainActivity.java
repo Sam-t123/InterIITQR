@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -92,13 +93,13 @@ public class MainActivity extends AppCompatActivity {
                                 String Sport=(String) document.get("Sports");
                                 String currentStatus=(String)document.get("Status");
 
-                                if(currentStatus.equals(statusUpdate))
+                                if(currentStatus.equals(statusUpdate)){
                                     //Toast.makeText(MainActivity.this,"Chori",Toast.LENGTH_LONG).show();
                                     Data.setText(Name + "\n" + Sport + "\n" + Designation + "\n" + College);
                                     TextView alert = findViewById(R.id.alert_view);
                                     alert.setText("Already Recorded");
                                     MediaPlayer player=MediaPlayer.create(MainActivity.this,R.raw.beep);
-                                    player.start();
+                                    player.start();}
                                 else {
                                     document.getReference().update("Status",statusUpdate);
                                     String url = (str1+Designation+str1a+Name+str2+Sport+str3+College+str4);
@@ -106,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                                     i.setData(Uri.parse(url));
                                     startActivity(i);
                                     i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    Data.setText(Name+"\n"+Sport+"\n"+College);
+                                    Data.setText(Name+"\n"+Designation+"\n"+Sport+"\n"+College);
                                 }
 
                             }
