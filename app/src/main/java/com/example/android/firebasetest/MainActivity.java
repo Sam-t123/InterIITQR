@@ -92,11 +92,10 @@ public class MainActivity extends AppCompatActivity {
                                 String Name=(String) document.get("Name");
                                 String Sport=(String) document.get("Sports");
                                 String currentStatus=(String)document.get("Status");
-
+                                TextView alert = findViewById(R.id.alert_view);
                                 if(currentStatus.equals(statusUpdate)){
                                     //Toast.makeText(MainActivity.this,"Chori",Toast.LENGTH_LONG).show();
                                     Data.setText(Name + "\n" + Sport + "\n" + Designation + "\n" + College);
-                                    TextView alert = findViewById(R.id.alert_view);
                                     alert.setText("Already Recorded");
                                     MediaPlayer player=MediaPlayer.create(MainActivity.this,R.raw.beep);
                                     player.start();}
@@ -106,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
                                     Intent i = new Intent(Intent.ACTION_VIEW);
                                     i.setData(Uri.parse(url));
                                     startActivity(i);
+                                    alert.setText("");
                                     i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                     Data.setText(Name+"\n"+Designation+"\n"+Sport+"\n"+College);
                                 }
